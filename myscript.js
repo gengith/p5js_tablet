@@ -32,10 +32,6 @@ class Main {
 		} else {
 		}
 		
-		if (mouseIsPressed) {
-			fill(255);
-			ellipse(mouseX, mouseY, 50, 50);
-		}
 	}
 
 }
