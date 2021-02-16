@@ -88,7 +88,7 @@ function setup(){
 
 	window.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
 	window.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
-	createCanvas(960,480);
+	createCanvas(960,1440);
 	background('rgb(0,100,150)');
 	main = new Main();
 }
@@ -99,4 +99,7 @@ function draw(){
 
 }
 
-
+function touchMoved() {
+	ellepse(touches[0].x, touches[0].y, 10, 10);
+	return false;
+}
