@@ -41,11 +41,11 @@ class Menu {
 	constructor() {
 		this.select = 1;  //メニュー選択位置
 		this.selectmenu = [  // メニュー文字、メニュー位置ｘ、メニュー位置y、メニュー色、メニュー文字サイズ、判定bool、判定ｘ、判定y
-			['Menu',30,30,'white',30,false,0,0],
-			['Stage1',40,80,'black',30,true,100,50],
-			['Stage2',40,130,'black',30,true,100,100],
-			['Stage3',40,180,'black',30,true,100,150],
-			['testa',40,230,'black',30,true,100,200]
+			['Menu',100,100,'white',50,false,0,0],
+			['Stage1',100,200,'black',50,true,200,150],
+			['Stage2',100,300,'black',50,true,200,250],
+			['Stage3',100,400,'black',50,true,200,350],
+			['testa',100,500,'black',50,true,200,450]
 		];
 	}
 
@@ -58,7 +58,7 @@ class Menu {
 				this.select = i;
 			}
 		}
-		
+
 
 		
 	}
