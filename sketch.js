@@ -1,8 +1,8 @@
 // TouchedTexts
 let main;
-let keyinput = {
-	x: 0,
-	y: 0
+let touchinput = {
+	x: -1,
+	y: -1
 };
 
 class Main {
@@ -12,16 +12,18 @@ class Main {
 		this.menu = Main.createMenu();
 	}
 
-	keyproc() {
-		if (key === 'x') {
-			keyinput.x += 1;
-		} else {
-			keyinput.x = 0;
-		}
-	}
 
 	static createMenu() {
 		return new Menu();
+	}
+
+	static setSequence(p_seq) {
+		this.sequence = p_seq;
+	}
+
+	touchproc() {
+		touchinput.x = -1;
+		touchinput.y = -1;
 	}
 
 	draw() {
@@ -37,41 +39,42 @@ class Main {
 class Menu {
 
 	constructor() {
-		this.x = 30;  //メニュー文字表示位置
-		this.y = 30;
-		this.dx = 10;  //メニュー行間
-		this.dy = 50;
-		this.size = 30;  //メニュー文字サイズ
-		this.select = 0;  //メニュー選択位置
-		this.selectmenu = [
-			'Stage1',
-			'Stage2',
-			'Stage3',
-			'testa'
+		this.select = 1;  //メニュー選択位置
+		this.selectmenu = [  // メニュー文字、メニュー位置ｘ、メニュー位置y、メニュー色、メニュー文字サイズ、判定bool、判定ｘ、判定y
+			['Menu',30,30,'white',30,false,0,0],
+			['Stage1',40,80,'black',30,true,100,50],
+			['Stage2',40,130,'black',30,true,100,100],
+			['Stage3',40,180,'black',30,true,100,150],
+			['testa',40,230,'black',30,true,100,200]
 		];
 	}
 
 
 
 	proc() {
-		if (keyinput.x === 1 && this.select < this.selectmenu.length - 1) {
-				this.select++;
+	
+		for (let i = 0; i < this.selectmenu.length; i++) {
+			if ( this.selectmenu[i][5] && touchinput.x > this.selectmenu[i][1] && touchinput.x < this.selectmenu[i][6] && touchinput.y < this.selectmenu[i][2] && touchinput.y > this.selectmenu[i][7] ) {
+				this.select = i;
+			}
 		}
+		
+
+		
 	}
 
 
 	draw() {
-		textSize(this.size);
-		fill('white');
-		text("Menu",this.x,this.y);
-		fill('black');
+	
 		for (let i = 0; i < this.selectmenu.length; i++) {
+			textSize(this.selectmenu[i][4]);
+			fill(this.selectmenu[i][3]);
 			if (this.select === i) {
 				fill('red');
 			}
-			text(this.selectmenu[i],this.x + this.dx,this.y + this.dy * (i + 1));
-			fill('black');
+			text(this.selectmenu[i][0],this.selectmenu[i][1],this.selectmenu[i][2]);
 		}
+
 	}
 
 }
@@ -81,22 +84,22 @@ class Menu {
 function setup(){
 	window.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
 	window.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
-	createCanvas(960,480);
+	createCanvas(960,1200);
 	background('rgb(0,100,150)');
 	main = new Main();
 }
 
 function draw(){
-	main.keyproc();
 	main.draw();
-
+	main.touchproc();
 }
 
 
 
 	
 function touchStarted(){
-  //text("こんにちは", touchX, touchY);
+  touchinput.x = touchX
+  touchinput.y = touchY
   ellipse(touchX,touchY,10,10);
   return false;
 }
