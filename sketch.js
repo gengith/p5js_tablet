@@ -40,12 +40,12 @@ class Menu {
 
 	constructor() {
 		this.select = 1;  //メニュー選択位置
-		this.selectmenu = [  // メニュー文字、メニュー位置ｘ、メニュー位置y、メニュー色、メニュー文字サイズ、判定bool、判定ｘ、判定y
-			['Menu',100,100,'white',50,false,0,0],
-			['Stage1',100,200,'black',50,true,200,150],
-			['Stage2',100,300,'black',50,true,200,250],
-			['Stage3',100,400,'black',50,true,200,350],
-			['testa',100,500,'black',50,true,200,450]
+		this.selectmenu = [  // メニュー文字、メニュー位置ｘ、メニュー位置y、メニュー色、メニュー文字サイズ、判定bool、判定ｘ1、判定y1、判定ｘ2、判定y2
+			['Menu',100,100,'white',50,false,0,0,0,0],
+			['Stage1',100,200,'black',50,true,70,230,230,130],
+			['Stage2',100,300,'black',50,true,70,330,230,230],
+			['Stage3',100,400,'black',50,true,70,430,230,330],
+			['testa',100,500,'black',50,true,70,530,230,430]
 		];
 	}
 
@@ -54,9 +54,13 @@ class Menu {
 	proc() {
 	
 		for (let i = 0; i < this.selectmenu.length; i++) {
-			if ( this.selectmenu[i][5] && touchinput.x > this.selectmenu[i][1] && touchinput.x < this.selectmenu[i][6] && touchinput.y < this.selectmenu[i][2] && touchinput.y > this.selectmenu[i][7] ) {
+			if ( this.selectmenu[i][5] && touchinput.x > this.selectmenu[i][6] && touchinput.x < this.selectmenu[i][8] && touchinput.y < this.selectmenu[i][7] && touchinput.y > this.selectmenu[i][9] ) {
 				this.select = i;
 			}
+			
+			noFill();
+			rect(this.selectmenu[i][6],this.selectmenu[i][7],this.selectmenu[i][8],this.selectmenu[i][9] - this.selectmenu[i][7]);
+			
 		}
 
 
