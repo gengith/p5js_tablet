@@ -79,6 +79,8 @@ class Menu {
 
 
 function setup(){
+	window.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
+	window.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
 	createCanvas(960,480);
 	background('rgb(0,100,150)');
 	main = new Main();
