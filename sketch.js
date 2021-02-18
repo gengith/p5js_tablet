@@ -1,5 +1,6 @@
 // TouchedTexts
 let main;
+let myimage;
 let touchinput = {
 	x: -1,
 	y: -1
@@ -9,16 +10,8 @@ class Main {
 
 	constructor() {
 		this.sequence = 1;  //メニュー画面
-		this.menu = Main.createMenu();
-	}
-
-
-	static createMenu() {
-		return new Menu();
-	}
-
-	static setSequence(p_seq) {
-		this.sequence = p_seq;
+		this.menu = new Menu();
+		this.game = new Game();
 	}
 
 	touchproc() {
@@ -27,11 +20,22 @@ class Main {
 	}
 
 	draw() {
+		background('rgb(0,100,150)');
 		if (this.sequence === 1){  //メニュー画面
 			this.menu.proc();
 			this.menu.draw();
+			this.sequence = this.menu.setMainSequence(1);
+		} else if (this.sequence === 2){  // ゲームメニュー1
+			this.game.proc();
+			this.game.draw();
+		} else if (this.sequence === 3){
+			ellipse(200,200,100,100);
+		} else if (this.sequence === 4){
+			ellipse(200,200,50,50);
 		} else {
 		}
+		
+		
 	}
 
 }
@@ -40,31 +44,44 @@ class Menu {
 
 	constructor() {
 		this.select = 1;  //メニュー選択位置
-		this.selectmenu = [  // メニュー文字、メニュー位置ｘ、メニュー位置y、メニュー色、メニュー文字サイズ、判定bool、判定ｘ1、判定y1、判定ｘ2、判定y2
-			['Menu',100,100,'white',50,false,0,0,0,0],
-			['Stage1',100,200,'black',50,true,70,230,230,130],
-			['Stage2',100,300,'black',50,true,70,330,230,230],
-			['Stage3',100,400,'black',50,true,70,430,230,330],
-			['testa',100,500,'black',50,true,70,530,230,430]
+		this.selectmenu = [  // メニュー文字、メニュー位置ｘ、メニュー位置y、メニュー色、メニュー文字サイズ、判定bool、判定ｘ1、判定y1、判定ｘ2、判定y2、セレクト先
+			['Menu',100,100,'white',50,false,0,0,0,0,0],
+			['TEST1',100,200,'black',50,true,70,230,230,130,2],
+			['TEST2',100,300,'black',50,true,70,330,230,230,3],
+			['TEST3',100,400,'black',50,true,70,430,230,330,4],
+			['testa',100,500,'black',50,true,70,530,230,430,5]
 		];
+		this.setMainSequenceFlag = false;
 	}
 
 
+
+
+	setMainSequence(pdefault) {
+		if (this.setMainSequenceFlag) {
+			let tmp_select = this.select;
+			this.select = 1;
+			this.setMainSequenceFlag = false;
+			return this.selectmenu[tmp_select][10];
+		}
+		return pdefault;
+	}
 
 	proc() {
 	
 		for (let i = 0; i < this.selectmenu.length; i++) {
 			if ( this.selectmenu[i][5] && touchinput.x > this.selectmenu[i][6] && touchinput.x < this.selectmenu[i][8] && touchinput.y < this.selectmenu[i][7] && touchinput.y > this.selectmenu[i][9] ) {
 				this.select = i;
+				this.setMainSequenceFlag = true;
+				break;
 			}
 			
+			//★test
 			noFill();
 			rect(this.selectmenu[i][6],this.selectmenu[i][7],this.selectmenu[i][8],this.selectmenu[i][9] - this.selectmenu[i][7]);
+			//ellipse(300,100,10,this.select * 10);
 			
 		}
-
-
-		
 	}
 
 
@@ -84,6 +101,29 @@ class Menu {
 }
 
 
+class Game {
+	constructor() {
+
+	}
+
+	proc() {
+		
+	}
+
+	draw() {
+	
+		image(myimage,100,100,200,200);
+
+	}
+
+}
+
+
+function preload() {
+  //変数を使って画像をロード
+  //myimage = loadImage('https://github.com/gengith/p5js_tablet/tree/main/images/spade1.jpg');
+  myimage = loadImage('images/spade1.jpg');
+}
 
 function setup(){
 	window.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
