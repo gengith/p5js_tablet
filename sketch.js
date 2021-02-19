@@ -145,7 +145,8 @@ function preload() {
   //myimages[0] = 'test0';
 	for (let i = 0; i < 26; i++) {
 		//myimages.push('test'+i);
-		myimages.push(loadImage('images/torannpu-illust' + i + '.png'));
+		let num = i + 1;
+		myimages.push(loadImage('images/torannpu-illust' + num + '.png'));
 	}
 }
 
