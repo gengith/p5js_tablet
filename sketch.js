@@ -1,6 +1,6 @@
 // TouchedTexts
 let main;
-let myimage;
+let myimages = [];
 let touchinput = {
 	x: -1,
 	y: -1
@@ -103,7 +103,20 @@ class Menu {
 
 class Game {
 	constructor() {
-
+		this.tranp = [];
+		this.nx = 4;
+		this.ny = 7;
+		this.ty = height / this.ny;
+		this.tx = this.ty / 2;
+		
+		
+		for (let i = 0; i < this.ny; i++) {
+			for (let j = 0; j < this.nx; j++) {
+				if( j + i * this.nx < 26) {
+					this.tranp.push([myimages[j + i * this.nx],this.tx * j,this.ty * i,this.tx,this.ty]);
+				}
+			}
+		}
 	}
 
 	proc() {
@@ -112,7 +125,14 @@ class Game {
 
 	draw() {
 	
-		image(myimage,100,100,200,200);
+		//image(myimage,100,100,200,200);
+		text(this.tranp[0][0],this.tranp[0][1],this.tranp[0][2]);
+		text(this.tranp[1][0],100,200);
+		text(this.tranp[2][0],200,300);
+
+		for (let i = 0; i < 26; i++) {
+			rect(this.tranp[i][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4]);
+		}
 
 	}
 
@@ -121,9 +141,14 @@ class Game {
 
 function preload() {
   //変数を使って画像をロード
-  //myimage = loadImage('https://github.com/gengith/p5js_tablet/tree/main/images/spade1.jpg');
-  myimage = loadImage('images/spade1.jpg');
+  //myimages = loadImage('images/torannpu-illust1.png');
+  //myimages[0] = 'test0';
+	for (let i = 0; i < 26; i++) {
+		//myimages.push('test'+i);
+		myimages.push(loadImage('images/torannpu-illust' + i + '.png'));
+	}
 }
+
 
 function setup(){
 	window.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
