@@ -104,8 +104,8 @@ class Menu {
 class Game {
 	constructor() {
 		this.tranp = [];
-		this.nx = 7;
-		this.ny = 4;
+		this.nx = 6;
+		this.ny = 5;
 		this.ty = height / this.ny;
 		this.tx = this.ty / 2;
 		
@@ -113,7 +113,7 @@ class Game {
 		for (let i = 0; i < this.ny; i++) {
 			for (let j = 0; j < this.nx; j++) {
 				if( j + i * this.nx < 26) {
-					this.tranp.push([myimages[j + i * this.nx],this.tx * j,this.ty * i,this.tx,this.ty]);
+					this.tranp.push([myimages[j + i * this.nx],this.tx * j,this.ty * i,this.tx,this.ty,false]);
 				}
 			}
 		}
@@ -133,7 +133,11 @@ class Game {
 
 		for (let i = 0; i < 26; i++) {
 			//rect(this.tranp[i][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4]);
-			image(this.tranp[i][0],this.tranp[i][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4]);
+			if ( this.tranp[i][5] ) {
+				image(this.tranp[i][0],this.tranp[i][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4]);
+			} else {
+				rect(tranp[i][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4]);
+			}
 		}
 
 	}
