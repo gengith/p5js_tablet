@@ -133,9 +133,9 @@ class Game {
 
 		for (let i = 0; i < 26; i++) {
 			//rect(this.tranp[i][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4]);
+			image(this.tranp[i][0],this.tranp[i][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4]);
 		}
-		
-		image(this.tranp[0][0],100,100,200,200);
+
 	}
 
 }
