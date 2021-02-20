@@ -136,6 +136,7 @@ class Game {
 			if ( this.tranp[i][5] ) {
 				image(this.tranp[i][0],this.tranp[i][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4]);
 			} else {
+				fill('white')
 				rect(tranp[i][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4]);
 			}
 		}
