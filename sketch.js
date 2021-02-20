@@ -104,8 +104,8 @@ class Menu {
 class Game {
 	constructor() {
 		this.tranp = [];
-		this.nx = 4;
-		this.ny = 7;
+		this.nx = 6;
+		this.ny = 5;
 		this.ty = height / this.ny;
 		this.tx = this.ty / 2;
 		
