@@ -1,5 +1,5 @@
 // TouchedTexts
-let version = "1.2";
+let version = "1.3";
 let main;
 let myimages = [];
 let touchinput = {
@@ -47,7 +47,7 @@ class Menu {
 		this.select = 2;  //メニュー選択位置
 		this.selectmenu = [  // メニュー文字、メニュー位置ｘ、メニュー位置y、メニュー色、メニュー文字サイズ、選択判定bool、選択判定ｘ1、選択判定y1、選択判定ｘ2、選択判定y2、セレクト先
 			['Menu',100,100,'white',50,false,0,0,0,0,0],
-			['version ' + version,200,100,'black',10,false,0,0,0,0,0],
+			['version ' + version,250,100,'black',10,false,0,0,0,0,0],
 			['TEST1',100,200,'black',50,true,70,230,230,130,2],
 			['TEST2',100,300,'black',50,true,70,330,230,230,3],
 			['TEST3',100,400,'black',50,true,70,430,230,330,4],
