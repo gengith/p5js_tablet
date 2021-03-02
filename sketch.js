@@ -1,5 +1,5 @@
 // TouchedTexts
-let version = "1.4";
+let version = "1.5";
 let main;
 let myimages = [];
 let touchinput = {
@@ -82,7 +82,7 @@ class Menu {
 			noFill();
 			rect(this.selectmenu[i][6],this.selectmenu[i][7],this.selectmenu[i][8],this.selectmenu[i][9] - this.selectmenu[i][7]);
 			ellipse(this.selectmenu[i][6],this.selectmenu[i][7],10,10);
-			ellipse(this.selectmenu[i][8],this.selectmenu[i][9],10,10);
+			ellipse(this.selectmenu[i][8],this.selectmenu[i][9] - this.selectmenu[i][7],10,10);
 		}
 	}
 
