@@ -1,4 +1,5 @@
 // TouchedTexts
+let version = "1.0";
 let main;
 let myimages = [];
 let touchinput = {
@@ -44,8 +45,9 @@ class Menu {
 
 	constructor() {
 		this.select = 1;  //メニュー選択位置
-		this.selectmenu = [  // メニュー文字、メニュー位置ｘ、メニュー位置y、メニュー色、メニュー文字サイズ、判定bool、判定ｘ1、判定y1、判定ｘ2、判定y2、セレクト先
+		this.selectmenu = [  // メニュー文字、メニュー位置ｘ、メニュー位置y、メニュー色、メニュー文字サイズ、選択判定bool、選択判定ｘ1、選択判定y1、選択判定ｘ2、選択判定y2、セレクト先
 			['Menu',100,100,'white',50,false,0,0,0,0,0],
+			['version ' + version,150,100,'black',10,false,0,0,0,0,0],
 			['TEST1',100,200,'black',50,true,70,230,230,130,2],
 			['TEST2',100,300,'black',50,true,70,330,230,230,3],
 			['TEST3',100,400,'black',50,true,70,430,230,330,4],
@@ -103,7 +105,7 @@ class Menu {
 
 class Game {
 	constructor() {
-		this.tranp = [];
+		this.tranp = [];  // id, 画像id, 表示位置x, 表示位置y, 大きさx, 大きさy, 表裏flag
 		this.nx = 6;
 		this.ny = 5;
 		this.ty = height / this.ny;
@@ -112,11 +114,16 @@ class Game {
 		
 		for (let i = 0; i < this.ny; i++) {
 			for (let j = 0; j < this.nx; j++) {
-				if( j + i * this.nx < 26) {
-					this.tranp.push([myimages[j + i * this.nx],this.tx * j,this.ty * i,this.tx,this.ty,false]);
+				if( j + i * this.nx < 27) {
+					this.tranp.push(j + i * this.nx,[myimages[j + i * this.nx],this.tx * j,this.ty * i,this.tx,this.ty,false]);
 				}
 			}
 		}
+		
+		//★test
+		this.tranp[5][5] = true;
+		this.tranp[7][5] = true;
+		this.tranp[9][5] = true;
 	}
 
 	proc() {
@@ -125,19 +132,11 @@ class Game {
 
 	draw() {
 	
-		//image(myimage,100,100,200,200);
-		//text(this.tranp[0][0],this.tranp[0][1],this.tranp[0][2]);
-		//text(this.tranp[1][0],100,200);
-		//text(this.tranp[2][0],200,300);
-		
-
-		for (let i = 0; i < 26; i++) {
-			//rect(this.tranp[i][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4]);
+		for (let i = 1; i < 27; i++) {  //tranp[0]はトランプ裏面画像のための特殊id
 			if ( this.tranp[i][5] === false ) {
-				image(this.tranp[i][0],this.tranp[i][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4]);
+				image(this.tranp[i][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4],this.tranp[i][5]);  // トランプ表面画像表示
 			} else {
-				fill('white')
-				rect(tranp[i][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4]);
+				image(this.tranp[0][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4],this.tranp[i][5]); // トランプ裏面画像表示
 			}
 		}
 
@@ -148,12 +147,8 @@ class Game {
 
 function preload() {
   //変数を使って画像をロード
-  //myimages = loadImage('images/torannpu-illust1.png');
-  //myimages[0] = 'test0';
-	for (let i = 0; i < 26; i++) {
-		//myimages.push('test'+i);
-		let num = i + 1;
-		myimages.push(loadImage('images/torannpu-illust' + num + '.png'));
+	for (let i = 0; i < 27; i++) {
+		myimages.push(loadImage('images/torannpu-illust' + i + '.png'));
 	}
 }
 
