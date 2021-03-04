@@ -122,6 +122,11 @@ class Game {
 		
 		shuffle(0,26); // 0番(トランプ背面用)の箇所に最後の一枚を移動させる。(左上から表示するため)
 		
+		//トランプを混ぜる操作
+		for (let i = 0;  i < 100; i++) {
+			shuffle(random(1,26), random(1,26));
+		}
+		
 		//★test
 		this.tranp[5][6] = true;
 		this.tranp[7][6] = true;
