@@ -1,5 +1,5 @@
 // TouchedTexts
-let version = "1.9";
+let version = "2.0";
 let main;
 let myimages = [];
 let touchinput = {
@@ -105,7 +105,7 @@ class Menu {
 
 class Game {
 	constructor() {
-		this.tranp = [];  // id, 画像id, 表示位置x, 表示位置y, 大きさx, 大きさy, 表裏flag
+		this.tranp = [];  // id, 画像, 表示位置x, 表示位置y, 大きさx, 大きさy, 表裏flag
 		this.nx = 6;
 		this.ny = 5;
 		this.ty = height / this.ny;
@@ -137,9 +137,11 @@ class Game {
 		
 		for (let i = 1; i < 27; i++) {  //tranp[0]はトランプ裏面画像のための特殊id
 			if ( this.tranp[i][6] === false ) {
-				image(this.tranp[i][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4],this.tranp[i][5]);  // トランプ表面画像表示
+				//image(this.tranp[i][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4],this.tranp[i][5]);  // トランプ表面画像表示
+				ellipse(this.tranp[i][2],this.tranp[i][3],50,50);
 			} else {
-				image(this.tranp[0][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4],this.tranp[i][5]); // トランプ裏面画像表示
+				//image(this.tranp[0][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4],this.tranp[i][5]); // トランプ裏面画像表示
+				ellipse(this.tranp[i][2],this.tranp[i][3],10,10);
 			}
 		}
 
