@@ -1,5 +1,5 @@
 // TouchedTexts
-let version = "2.6";
+let version = "2.7";
 let main;
 let myimages = [];
 let touchinput = {
@@ -131,7 +131,10 @@ class Game {
 			}
 		}
 		
-		shuffle(0,26); // 0番(トランプ背面用)の箇所に最後の一枚を移動させる。(左上から表示するため)
+		//shuffle(0,26); // 0番(トランプ背面用)の箇所に最後の一枚を移動させる。(左上から表示するため)
+		this.tranp[26][2] = this.tranp[0][2];
+		this.tranp[26][3] = this.tranp[0][3];
+		
 		
 		//トランプを混ぜる操作
 		for (let i = 0;  i < 100; i++) {
