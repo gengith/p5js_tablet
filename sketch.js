@@ -1,5 +1,5 @@
 // TouchedTexts
-let version = "2.2";
+let version = "2.3";
 let main;
 let myimages = [];
 let touchinput = {
@@ -115,7 +115,7 @@ class Game {
 		for (let i = 0; i < this.ny; i++) {
 			for (let j = 0; j < this.nx; j++) {
 				if( j + i * this.nx < 27) {
-					this.tranp.push(j + i * this.nx,[myimages[j + i * this.nx],this.tx * j,this.ty * i,this.tx,this.ty,false]);
+					this.tranp.push([j + i * this.nx,myimages[j + i * this.nx],this.tx * j,this.ty * i,this.tx,this.ty,false]);
 				}
 			}
 		}
@@ -137,11 +137,9 @@ class Game {
 		
 		for (let i = 1; i < 27; i++) {  //tranp[0]はトランプ裏面画像のための特殊id
 			if ( !this.tranp[i][6] ) {
-				//image(this.tranp[i][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4],this.tranp[i][5]);  // トランプ表面画像表示
-				text(String(i),this.tranp[i][2],this.tranp[i][3]);
+				image(this.tranp[i][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4],this.tranp[i][5]);  // トランプ表面画像表示
 			} else {
-				//image(this.tranp[0][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4],this.tranp[i][5]); // トランプ裏面画像表示
-				text(String(i),this.tranp[i][2],this.tranp[i][3]);
+				image(this.tranp[0][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4],this.tranp[i][5]); // トランプ裏面画像表示
 			}
 		}
 
