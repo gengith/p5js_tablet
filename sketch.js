@@ -1,5 +1,5 @@
 // TouchedTexts
-let version = "2.4";
+let version = "2.5";
 let main;
 let myimages = [];
 let touchinput = {
