@@ -1,5 +1,5 @@
 // TouchedTexts
-let version = "2.7";
+let version = "2.8";
 let main;
 let myimages = [];
 let touchinput = {
@@ -105,16 +105,6 @@ class Menu {
 
 class Game {
 
-	shuffle(p1,p2) {
-		let x = this.tranp[p1][2];
-		let y = this.tranp[p1][3];
-		
-		this.tranp[p1][2] = this.tranp[p2][2];
-		this.tranp[p1][3] = this.tranp[p2][3];
-		this.tranp[p2][2] = x;
-		this.tranp[p2][3] = y;
-	}
-
 	constructor() {
 		this.tranp = [];  // id, 画像, 表示位置x, 表示位置y, 大きさx, 大きさy, 表裏flag
 		this.nx = 6;
@@ -131,9 +121,7 @@ class Game {
 			}
 		}
 		
-		//shuffle(0,26); // 0番(トランプ背面用)の箇所に最後の一枚を移動させる。(左上から表示するため)
-		this.tranp[26][2] = this.tranp[0][2];
-		this.tranp[26][3] = this.tranp[0][3];
+		shuffle(0,26); // 0番(トランプ背面用)の箇所に最後の一枚を移動させる。(左上から表示するため)
 		
 		
 		//トランプを混ぜる操作
@@ -147,7 +135,15 @@ class Game {
 		this.tranp[9][6] = true;
 	}
 
-
+	shuffle(p1,p2) {
+		let tmp_x = this.tranp[p1][2];
+		let tmp_y = this.tranp[p1][3];
+		
+		this.tranp[p1][2] = this.tranp[p2][2];
+		this.tranp[p1][3] = this.tranp[p2][3];
+		this.tranp[p2][2] = tmp_x;
+		this.tranp[p2][3] = tmp_y;
+	}
 
 	proc() {
 		
