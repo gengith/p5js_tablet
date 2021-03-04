@@ -1,5 +1,5 @@
 // TouchedTexts
-let version = "2.1";
+let version = "2.2";
 let main;
 let myimages = [];
 let touchinput = {
@@ -133,20 +133,20 @@ class Game {
 	draw() {
 		
 		//★test
-		ellipse(100,100,100,100);
+		//ellipse(100,100,100,100);
 		
 		for (let i = 1; i < 27; i++) {  //tranp[0]はトランプ裏面画像のための特殊id
-			if ( this.tranp[i][6] === false ) {
+			if ( !this.tranp[i][6] ) {
 				//image(this.tranp[i][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4],this.tranp[i][5]);  // トランプ表面画像表示
-				text(this.tranp[i][0],this.tranp[i][2],this.tranp[i][3]);
+				text(String(i),this.tranp[i][2],this.tranp[i][3]);
 			} else {
 				//image(this.tranp[0][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4],this.tranp[i][5]); // トランプ裏面画像表示
-				text(this.tranp[i][0],this.tranp[i][2],this.tranp[i][3]);
+				text(String(i),this.tranp[i][2],this.tranp[i][3]);
 			}
 		}
 
 		//★test
-		ellipse(500,500,100,100);
+		//ellipse(500,500,100,100);
 
 	}
 
