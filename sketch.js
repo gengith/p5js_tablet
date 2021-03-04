@@ -1,5 +1,5 @@
 // TouchedTexts
-let version = "2.3";
+let version = "2.4";
 let main;
 let myimages = [];
 let touchinput = {
@@ -115,10 +115,12 @@ class Game {
 		for (let i = 0; i < this.ny; i++) {
 			for (let j = 0; j < this.nx; j++) {
 				if( j + i * this.nx < 27) {
-					this.tranp.push([j + i * this.nx,myimages[j + i * this.nx],this.tx * j,this.ty * i,this.tx,this.ty,false]);
+					this.tranp.push([j + i * this.nx, myimages[j + i * this.nx], this.tx * j, this.ty * i, this.tx, this.ty, false]);
 				}
 			}
 		}
+		
+		shuffle(0,26); // 0番(トランプ背面用)の箇所に最後の一枚を移動させる。(左上から表示するため)
 		
 		//★test
 		this.tranp[5][6] = true;
@@ -126,15 +128,22 @@ class Game {
 		this.tranp[9][6] = true;
 	}
 
+	shuffle(p1,p2) {
+		let x = this.tranp[p1][2];
+		let y = this.tranp[p1][3];
+		
+		this.tranp[p1][2] = this.tranp[p2][2];
+		this.tranp[p1][3] = this.tranp[p2][3];
+		this.tranp[p2][2] = x;
+		this.tranp[p2][3] = y;
+	}
+
 	proc() {
 		
 	}
 
 	draw() {
-		
-		//★test
-		//ellipse(100,100,100,100);
-		
+				
 		for (let i = 1; i < 27; i++) {  //tranp[0]はトランプ裏面画像のための特殊id
 			if ( !this.tranp[i][6] ) {
 				image(this.tranp[i][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4],this.tranp[i][5]);  // トランプ表面画像表示
@@ -142,9 +151,6 @@ class Game {
 				image(this.tranp[0][1],this.tranp[i][2],this.tranp[i][3],this.tranp[i][4],this.tranp[i][5]); // トランプ裏面画像表示
 			}
 		}
-
-		//★test
-		//ellipse(500,500,100,100);
 
 	}
 
