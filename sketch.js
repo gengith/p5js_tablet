@@ -1,5 +1,5 @@
 // TouchedTexts
-let version = "2.8";
+let version = "2.9";
 let main;
 let myimages = [];
 let touchinput = {
@@ -126,7 +126,7 @@ class Game {
 		
 		//トランプを混ぜる操作
 		for (let i = 0;  i < 100; i++) {
-			shuffle(random(1,26), random(1,26));
+			//shuffle(random(1,26), random(1,26));
 		}
 		
 		//★test
@@ -136,6 +136,12 @@ class Game {
 	}
 
 	shuffle(p1,p2) {
+
+this.tranp[p2][2]=0;
+
+this.tranp[p2][3]=0;
+
+/*
 		let tmp_x = this.tranp[p1][2];
 		let tmp_y = this.tranp[p1][3];
 		
@@ -143,6 +149,7 @@ class Game {
 		this.tranp[p1][3] = this.tranp[p2][3];
 		this.tranp[p2][2] = tmp_x;
 		this.tranp[p2][3] = tmp_y;
+*/
 	}
 
 	proc() {
