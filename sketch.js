@@ -133,7 +133,7 @@ class Game {
 		this.nx = 6;
 		this.ny = 5;
 		this.ty = height / this.ny;
-		this.tx = this.ty / 2;
+		this.tx = this.ty * 2 / 3;
 		
 		for (let i = 0; i < this.ny; i++) {
 			for (let j = 0; j < this.nx; j++) {
@@ -309,7 +309,7 @@ function preload() {
 function setup(){
 	window.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
 	window.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
-	createCanvas(730,1200);
+	createCanvas(windowWidth, windowHeight);
 	background('rgb(0,100,150)');
 	main = new Main();
 }
