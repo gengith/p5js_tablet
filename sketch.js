@@ -31,10 +31,6 @@ class Main {
 			this.game.proc();
 			this.game.draw();
 			this.sequence = this.game.setMainSequence(2);
-		} else if (this.sequence === 3){
-			ellipse(200,200,100,100);
-		} else if (this.sequence === 4){
-			ellipse(200,200,50,50);
 		} else if (this.sequence === 102){  // ゲームクリア画面
 			this.clear.proc();
 			this.clear.draw();
@@ -59,8 +55,7 @@ class Menu {
 		this.selectmenu = [  // メニュー文字、メニュー位置ｘ、メニュー位置y、メニュー色、メニュー文字サイズ、選択判定bool、選択判定ｘ1、選択判定y1、選択判定ｘ2、選択判定y2、セレクト先
 			['Menu',100,100,'white',50,false,0,0,0,0,0],
 			['version ' + version,250,100,'black',10,false,0,0,0,0,0],
-			['はじめる',100,200,'black',50,true,70,230,350,130,2],
-			['TEST',100,500,'black',50,true,70,530,350,430,5]
+			['はじめる',100,200,'black',50,true,70,230,350,130,2]
 		];
 		this.init();
 	}
