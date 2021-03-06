@@ -1,5 +1,5 @@
 // TouchedTexts
-let version = "2.91";
+let version = "1.0";
 let main;
 let myimages = [];
 let touchinput = {
@@ -231,7 +231,7 @@ class Game {
 		
 		fill('red');
 		textSize(30);
-		text("SCORE ： " + this.score,400,1100);
+		text("SCORE ： " + this.score,width - 200,height - 70);
 	}
 
 }
