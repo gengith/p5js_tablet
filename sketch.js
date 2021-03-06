@@ -133,7 +133,7 @@ class Game {
 		this.nx = 6;
 		this.ny = 5;
 		this.ty = height / this.ny;
-		this.tx = this.ty * 2 / 3;
+		this.tx = width / this.nx;
 		
 		for (let i = 0; i < this.ny; i++) {
 			for (let j = 0; j < this.nx; j++) {
